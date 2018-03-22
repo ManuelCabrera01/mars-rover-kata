@@ -5,10 +5,12 @@ function Rovers(position, direction ){
 }
 // rover1 and rover 2 to complete lthe last iteration super bonus
 var myRover1 = new Rovers(
-[0,0], "N"
+[0,0],
+"N"
 );
 var myRover2 = new Rovers (
-   [1,0], "N"
+   [1,0],
+    "N"
  );
 
 // declaring my obstacles in the grid
@@ -17,18 +19,18 @@ var MyObstacle2= [6,2];
 var MyObstacle3= [1,3];
 
 function goForward(fOrB) {
-  switch(rover.direction) {
+  switch(this.direction) {
     case 'N':
-      rover.position[0]++;
+      this.position[0]++;
       break;
     case 'E':
-      rover.position[1]++;
+        this.position[1]++;
       break;
     case 'S':
-      rover.position[0]--;
+        this.position[0]--;
       break;
     case 'W':
-      rover.position[1]--;
+        this.position[1]--;
       break;
       default:
       console.log('you don\'t know how to operate rover' );
@@ -36,18 +38,18 @@ function goForward(fOrB) {
 
 }
 function goBackward(fOrB) {
-  switch(rover.direction) {
+  switch(this.direction) {
     case 'N':
-      rover.position[1] -=1;
+        this.position[1] -=1;
       break;
     case 'E':
-      rover.position[0]-=1;
+        this.position[0]-=1;
       break;
     case 'S':
-      rover.position[0]++;
+      this.position[0]++;
       break;
     case 'W':
-      rover.position[0]++;
+        this.position[0]++;
       break;
       default:
       console.log('you don\'t know how to operate rover' );
@@ -58,59 +60,77 @@ function goBackward(fOrB) {
 
 
 function turnRigth(lOrR) {
-    case "r":
-  +  switch (lOrR) {
-  +
-  +      switch (rover.direction) {
-  +        case "N":
-  +          rover.direction = "E";
-  +          break;
-  +        case "E":
-  +          rover.direction = "S";
-  +          break;
-  +        case "S":
-  +          rover.direction = "W";
-  +          break;
-  +        case "W":
-  +          rover.direction = "N";
-  +          break;
-  +        default:
-  +
-  +      }
-  // console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]")
-  }
+  switch (lOrR){
+        case "r":
+      switch (this.direction) {
+        case "N":
+          this.direction = "E";
+          break;
+        case "E":
+        this.direction= "S";
+           break;
+        case "S":
+       this.direction = "W";
+           break;
+         case "W":
+          this.direction = "N";
+           break;
+         default:
 
-  function turnLeft(lOrR)
+       }
+  console.log("my rover! position: [" + myRover1.position[0] + ", " + myRover1.position[1] + "]");
+      }
+    }
+
+  function turnLeft(lOrR){
+    switch (lOrR){
   case "l":
-+      switch (rover.direction) {
-+        case "N":
-+          rover.direction = "W";
-+          break;
-+        case "E":
-+          rover.direction = "N";
-+          break;
-+        case "S":
-+          rover.direction = "E";
-+          break;
-+        case "W":
-+          rover.direction = "S";
-+          break;
-+        default:
-+
-+      }
--  }
+      switch (this.direction) {
+        case "N":
+          this.direction = "W";
+          break;
+        case "E":
+          this.direction = "N";
+          break;
+        case "S":
+          this.direction= "E";
+          break;
+        case "W":
+        this.direction = "S";
+          break;
+        default:
+
+      }
+  }
+}
 
 function checkForObtacles(){
   if (this.position === MyObstacle1 ){
-    console.log("you just hit something at "+ MyObstacle1 +",  you better change your route")
+    console.log("you just hit something at "+ MyObstacle1 +",  you better change your route");
   }
   else if (this.position === MyObstacle2){
-      console.log("you just hit something at "+ MyObstacle2 +",  you better change your route")
+      console.log("you just hit something at "+ MyObstacle2 +",  you better change your route");
 
   }
   else if (this.position === MyObstacle3){
-      console.log("you just hit something at "+ MyObstacle3 +",  you better change your route")
+      console.log("you just hit something at "+ MyObstacle3 +",  you better change your route");
   }else{
-    console.log('path is clear')
+    console.log('path is clear');
   }
+}
+
+function moveTheBot(arr){
+  arr.forEach((el) => {
+    if (el==='f' ) {
+      goFoward(fOrB);
+    }else if ( el === 'b'){
+      goBackward(fOrB);
+    }else if (el === 'l'  ){
+        turnLeft(lOrR);
+      }else if (el === 'r'){
+        turnRigth(lOrR);
+      }else{
+       console.log("your better learn how to type before even think to drive one of my rovers");
+      }
+  });
 }
